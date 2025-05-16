@@ -4,108 +4,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Personal portfolio of a passionate web developer showcasing projects, skills, and contact form.">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
   <title>My Portfolio</title>
   <!-- Inlined Aesthetic CSS -->
   <style>
     /* Base Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
     html { scroll-behavior: smooth; }
-    body {
-      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-      color: #333;
-      line-height: 1.6;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-    header {
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(10px);
-      padding: 1rem 2rem;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    nav ul {
-      display: flex;
-      gap: 1.5rem;
-      list-style: none;
-    }
-    nav a {
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-    nav a:hover { color: #007acc; }
-    section {
-      padding: 4rem 2rem;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    section h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #007acc;
-      text-align: center;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-    section h2.fade-in {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .project {
-      background: #fff;
-      margin: 1.5rem 0;
-      padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s;
-    }
+    body { background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); color: #333; line-height: 1.6; display: flex; flex-direction: column; min-height: 100vh; }
+    header { background: rgba(255,255,255,0.8); backdrop-filter: blur(10px); padding: 1rem 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
+    nav ul { display: flex; gap: 1.5rem; list-style: none; }
+    nav a { text-decoration: none; color: #333; font-weight: 500; transition: color 0.3s; }
+    nav a:hover, nav a.active { color: #007acc; }
+    main { flex: 1; }
+    section { padding: 4rem 2rem; max-width: 900px; margin: 0 auto; }
+    section h2 { font-size: 2rem; margin-bottom: 1rem; color: #007acc; text-align: center; opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    section h2.fade-in { opacity: 1; transform: translateY(0); }
+    .project { background: #fff; margin: 1.5rem 0; padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: transform 0.3s; }
     .project:hover { transform: translateY(-5px); }
-    form {
-      display: grid;
-      gap: 1rem;
-      max-width: 400px;
-      margin: 0 auto;
-      background: #fff;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-    input, button {
-      padding: 0.75rem;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 1rem;
-    }
-    button {
-      background: #007acc;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
+    .project img { width: 100%; border-radius: 8px; margin-bottom: 1rem; }
+    form { display: grid; gap: 1rem; max-width: 400px; margin: 0 auto; background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    label { font-weight: 500; }
+    input, button, textarea { padding: 0.75rem; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; }
+    textarea { resize: vertical; min-height: 100px; }
+    button { background: #007acc; color: #fff; border: none; cursor: pointer; transition: background 0.3s; }
     button:hover { background: #005fa3; }
-    footer {
-      text-align: center;
-      padding: 1rem;
-      margin-top: auto;
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(10px);
-    }
+    footer { text-align: center; padding: 1rem; background: rgba(255,255,255,0.8); backdrop-filter: blur(10px); }
+    .socials { display: flex; justify-content: center; gap: 1rem; margin-top: 0.5rem; }
+    .socials a { color: #333; font-size: 1.5rem; transition: color 0.3s; }
+    .socials a:hover { color: #007acc; }
+    #toTop { position: fixed; bottom: 2rem; right: 2rem; display: none; background: #007acc; color: #fff; border: none; border-radius: 50%; width: 3rem; height: 3rem; cursor: pointer; font-size: 1.5rem; }
   </style>
 </head>
 <body>
-  <header>
+  <header aria-label="Main Navigation">
     <h1>Welcome to My Portfolio</h1>
     <nav>
       <ul>
@@ -115,69 +48,86 @@
       </ul>
     </nav>
   </header>
+  <main>
+    <section id="about">
+      <h2>About Me</h2>
+      <p>Passionate web developer with experience in HTML, CSS, and JavaScript. Skilled in building responsive, accessible, and interactive websites.</p>
+    </section>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>Passionate web developer with experience in HTML, CSS, and JavaScript.</p>
-  </section>
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="project">
+        <img src="project1.png" alt="Screenshot of Project 1">
+        <h3>Project 1</h3>
+        <p>Description of project 1. <a href="https://github.com/yourusername/project1" target="_blank" rel="noopener">View on GitHub</a></p>
+      </div>
+      <div class="project">
+        <img src="project2.png" alt="Screenshot of Project 2">
+        <h3>Project 2</h3>
+        <p>Description of project 2. <a href="https://github.com/yourusername/project2" target="_blank" rel="noopener">View on GitHub</a></p>
+      </div>
+    </section>
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="project">
-      <h3>Project 1</h3>
-      <p>Description of project 1.</p>
-    </div>
-    <div class="project">
-      <h3>Project 2</h3>
-      <p>Description of project 2.</p>
-    </div>
-  </section>
+    <section id="contact">
+      <h2>Contact</h2>
+      <form action="mailto:youremail@example.com" method="post" enctype="text/plain">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </section>
+  </main>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <form>
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required>
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
-      <button type="submit">Send</button>
-    </form>
-  </section>
+  <button id="toTop" aria-label="Scroll to top">↑</button>
 
   <footer>
     <p>&copy; 2023 My Portfolio</p>
+    <div class="socials" aria-label="Social Media Links">
+      <a href="https://github.com/yourusername" target="_blank" rel="noopener" aria-label="GitHub">
+        🐱
+      </a>
+      <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener" aria-label="LinkedIn">
+        🔗
+      </a>
+    </div>
   </footer>
 
   <!-- Inlined JavaScript -->
   <script>
-    // Smooth scroll for internal links
-    document.querySelectorAll('nav a').forEach(link => {
+    // Element selectors
+    const links = document.querySelectorAll('nav a');
+    const toTop = document.getElementById('toTop');
+
+    // Smooth scroll & active nav link
+    links.forEach(link => {
       link.addEventListener('click', e => {
         e.preventDefault();
         document.querySelector(link.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
       });
     });
 
-    // Simple form submission handler
+    // Form submission
     document.querySelector('form').addEventListener('submit', e => {
-      e.preventDefault();
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      if (name && email) {
-        alert(`Thank you, ${name}! Your message has been sent.`);
-        e.target.reset();
-      } else {
-        alert('Please fill in all fields.');
-      }
+      alert(`Thank you, ${e.target.name.value}! Your message has been sent.`);
     });
 
-    // Animate section headings on scroll
+    // Intersection Observer for headings
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add('fade-in');
       });
     }, { threshold: 0.1 });
     document.querySelectorAll('section h2').forEach(h2 => observer.observe(h2));
+
+    // Scroll-to-top button
+    window.addEventListener('scroll', () => {
+      toTop.style.display = window.scrollY > 300 ? 'block' : 'none';
+    });
+    toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   </script>
 </body>
 </html>
